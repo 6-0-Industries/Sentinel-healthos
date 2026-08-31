@@ -1,97 +1,27 @@
-# 🛰️ Sentinel HealthOS
+# Sentinel HealthOS 6.0 🌍⚕️
 
-Predictive Public Health powered by Earth Observation and Artificial Intelligence.
+Sentinel HealthOS is an integrated public health intelligence platform designed to monitor climate risk, environmental variables, and disease outbreak dynamics across South Africa's provinces.
 
-## Mission
+## API Endpoint Reference
 
-To enable governments and healthcare systems to anticipate, prepare for, and respond to public health risks using ethical, explainable, and evidence-based AI.
+| Category | Endpoint | Description |
+| :--- | :--- | :--- |
+| **System** | `GET /` | API status and version health check |
+| **Provinces** | `GET /api/provinces/risk-profiles` | Provincial risk levels and capacity metrics |
+| **Earth Observation** | `GET /api/earth-obs/metrics/{province_code}` | NDVI, land surface temp, precipitation & cloud metrics |
+| **Surveillance** | `GET /api/surveillance/predictions/{province_code}` | Outbreak prediction risk scores & primary drivers |
+| **Climate** | `GET /api/climate/vulnerability/{province_code}` | Heat wave, drought, and flood susceptibility metrics |
+| **Air Quality** | `GET /api/air-quality/metrics/{province_code}` | AQI, PM2.5, PM10, and NO2 exposure levels |
 
-## About
+## Local Development Setup
 
-Sentinel HealthOS is a flagship platform developed by **6.0 Industries** to help governments, healthcare organizations, and researchers predict disease outbreaks and climate-related health risks using AI.
+```bash
+# Clone the repository
+git clone [https://github.com/6-0-Industries/Sentinel-healthos.git](https://github.com/6-0-Industries/Sentinel-healthos.git)
+cd Sentinel-healthos
 
-The platform combines:
+# Install dependencies
+pip install -r requirements.txt
 
-- 🛰️ Satellite Earth Observation
-- 🌦️ Climate and Weather Data
-- 🌍 Air Quality Monitoring
-- 👥 Population Density
-- 🏥 Health Facility Locations
-- 🦠 Disease Surveillance
-- 🤖 Explainable AI
-- 🔒 AI Governance
-
-## MVP Features
-
-- South African Risk Dashboard
-- Interactive Province Map
-- AI Health Risk Prediction
-- Climate Intelligence
-- Reports Dashboard
-- WHO-aligned AI Governance
-
-## Future Integrations
-
-- SANSA
-- Copernicus Sentinel
-- NICD
-- DHIS2
-- South African Weather Service
-- WHO Guidelines
-
-## Vision
-
-To become Africa's leading AI platform for predictive public health.
-
-## Mission
-
-To enable governments and healthcare systems to anticipate, prepare for, and respond to public health risks using ethical, explainable, and evidence-based AI.
-
-## Project Status
-
-🚧 Currently in active MVP development.
-
-We are building an open and collaborative platform and welcome contributors from software engineering, AI, GIS, epidemiology, public health, climate science, and healthcare.
-
-## Join Us
-
-We are looking for:
-
-- Software Engineers
-- AI/ML Engineers
-- GIS Specialists
-- Public Health Researchers
-- Epidemiologists
-- UX Designers
-- Data Scientists
-- Students
-- Open Source Contributors
-
-If you're passionate about using technology to improve public health, we'd love to collaborate.
-
-## 6.0 Industries Ecosystem
-
-Sentinel HealthOS is the first platform in the 6.0 Industries ecosystem.
-
-Future platforms will focus on:
-
-- AI Governance
-- Responsible AI
-- Health Policy Intelligence
-- Clinical Decision Support
-- Healthcare Compliance
-- Digital Public Health
-
-- ## Disclaimer
-
-Sentinel HealthOS is currently a research and development project.
-
-The platform is intended to support public health decision-making and research. It is not a substitute for clinical judgement, medical diagnosis, or official public health advice.
-
-## Vision 2030
-
-By 2030, we aim to become Africa's leading trusted AI platform for predictive public health, empowering governments, researchers, and healthcare organizations with ethical, explainable, and actionable intelligence to anticipate health risks before they become emergencies.
-
----
-
-© 2026 6.0 Industries. All Rights Reserved.
+# Start the server
+uvicorn src.api.main:app --reload
